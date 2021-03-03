@@ -117,10 +117,40 @@ if ! shopt -oq posix; then
 fi
 alias python=python3
 export SPARK_HOME=/usr/local/spark
+#export PYSPARK_PYTHON=/usr/bin/python3
+export PYSPARK_PYTHON=/home/ows/projects/de/ML/.ml/bin/python
+
 export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin
-export PYSPARK_PYTHON=/usr/bin/python3
+
+export PATH=~/.npm-global/bin:$PATH
+
 
 export WORKON_HOME=$HOME/dev/.virtualenvs
 export PROJECT_HOME=$HOME/projects/python
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 source $HOME/.local/bin/virtualenvwrapper.sh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+ eval "$(pyenv init -)"
+fi
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/ows/dev/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/ows/dev/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/ows/dev/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/ows/dev/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
